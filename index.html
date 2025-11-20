@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta de cum-ple</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #1b1b1b;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #252525;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      max-width: 420px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      color: #f8d44c;
+      margin-bottom: 10px;
+    }
+
+    p { opacity: 0.95; }
+
+    /* Detalle decorativo especial */
+    .sparkle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #ffe27b, #f8d44c, transparent);
+      border-radius: 50%;
+      animation: sparkleMove 3s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    .s1 { top: -10px; left: -10px; animation-delay: 0s; }
+    .s2 { top: -10px; right: -10px; animation-delay: .6s; }
+    .s3 { bottom: -10px; left: -10px; animation-delay: 1.2s; }
+    .s4 { bottom: -10px; right: -10px; animation-delay: 1.8s; }
+
+    @keyframes sparkleMove {
+      0% { transform: scale(1); opacity: .6; }
+      50% { transform: scale(1.6); opacity: 1; }
+      100% { transform: scale(1); opacity: .6; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Texto cayendo */
+    @keyframes fall {
+      from { transform: translateY(0); }
+      to { transform: translateY(110vh); opacity: 0; }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="sparkle s1"></div>
+    <div class="sparkle s2"></div>
+    <div class="sparkle s3"></div>
+    <div class="sparkle s4"></div>
+
+    <h1>¡Feliz Cumple, Guillermo! 🎉</h1>
+    <p>Que tengas un buen dia, y el que no aya tenido clases valga la pena js. 🤝🔥<br><br>
+    (Yo le dije al director que te cancelen las clases por que es tu cumple años🙂‍↕️).</p>
+    <br></H>
+    <p>ave si no salimos arato</p>
+  </div>
+
+  <script>
+    function createFallingText() {
+      const text = document.createElement('div');
+      text.innerText = 'Feliz cumpleaños';
+      text.style.position = 'fixed';
+      text.style.top = '-20px';
+      text.style.left = Math.random() * window.innerWidth + 'px';
+      text.style.fontSize = '18px';
+      text.style.opacity = '0.8';
+      text.style.color = '#f8d44c';
+      text.style.pointerEvents = 'none';
+      text.style.animation = 'fall 4s linear forwards';
+      document.body.appendChild(text);
+      setTimeout(() => text.remove(), 4000);
+    }
+
+    setInterval(() => {
+      if (Math.random() < 0.3) createFallingText();
+    }, 700);
+  </script>
+
+</body>
+</html>
